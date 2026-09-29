@@ -1,40 +1,36 @@
-# EdgeNav // FleetGuard-AI
+# EdgeNav 
+### Problem Statement ID – 26123
+### Problem Statement Title - Edge-AI Based Distributed Fleet Coordination for Autonomous Mobile Robots (AMRs) in Smart Warehouses
 
-> **Decentralized Multi-Agent Swarm Navigation & 3D Industrial Digital Twin**  
-> Developed for **Smart India Hackathon (SIH 2026)**
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
-[![Three.js](https://img.shields.io/badge/Three.js-r128-black?style=flat&logo=three.js&logoColor=white)](https://threejs.org)
-[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+> Decentralized Multi-Agent Swarm Navigation & 3D Industrial Digital Twin  
+> Developed for Smart India Hackathon (SIH 2026)[cite: 2]
 
 ---
 
-## 📌 Overview
+## Overview
 
-**EdgeNav (FleetGuard-AI)** is an edge-centric, decentralized multi-agent pathfinding (MAPF) and fleet coordination framework[cite: 1, 2]. Designed for high-density industrial intralogistics, it eliminates central server single-points-of-failure by executing distributed spatial-temporal trajectory planning, dynamic right-of-way conflict resolution, and battery-aware dispatch directly at the edge[cite: 1, 2].
+EdgeNav (FleetGuard-AI) is an edge-centric, decentralized multi-agent pathfinding (MAPF) and fleet coordination framework[cite: 1, 2]. Designed for high-density industrial intralogistics, it eliminates central server single-points-of-failure by executing distributed trajectory planning, dynamic right-of-way conflict resolution, and battery-aware dispatch directly at the edge[cite: 1, 2].
 
-The repository includes a full-featured **3D Digital Twin & Mission Control Dashboard** built with **FastAPI WebSockets** and **Three.js**, supporting real-time 25Hz telemetry streams, dynamic hazard placement, aisle deadlock scenario injection, and interactive camera tracking.
-
----
-
-## 🚀 Key Features & Capabilities
-
-- **Decentralized Swarm Intelligence**: Eliminates central dispatch bottlenecks with peer-to-peer spatial deconfliction, priority-weighted corridor negotiations, and autonomous state transitions (`PICKUP` ➔ `LOADING` ➔ `TRANSIT` ➔ `UNLOADING` ➔ `CHARGING`)[cite: 1, 2].
-- **Dynamic Replanning & A\* Pathfinding**: Real-time 2D grid heuristic search with dynamic obstacle expansion, rerouting autonomous mobile robots (AMRs) immediately when blocked by active hazards or peer units.
-- **Interactive 3D Digital Twin (Three.js)**:
-  - **Perspective Modes**: Isometric industrial view, Top-Down 2D floor projection, and 3rd-Person Chase Cam tracking selected units.
-  - **Live Trajectory Projections**: Visualizes forward waypoint paths, dynamic LiDAR safety halos, and motion trails in 3D space.
-  - **Occupancy Heatmap**: Real-time traffic density matrix tracking warehouse aisle bottlenecks.
-  - **Interactive Obstacle Placement**: Raycast-driven click-to-deploy safety barriers directly onto warehouse aisles.
-- **Mission Control Deck**:
-  - Fleet-wide emergency stop (E-STOP) toggle.
-  - Head-on collision benchmark scenario trigger.
-  - Incident terminal stream with timestamped conflict audits[cite: 1].
-  - CSV export for fleet audit logs and incident reporting[cite: 1].
+The repository provides a complete 3D Digital Twin and Mission Control Dashboard built with FastAPI WebSockets and Three.js. It features real-time 25Hz telemetry streams, dynamic hazard placement, aisle deadlock scenario injection, and interactive camera tracking.
 
 ---
 
-## 🏗️ Architecture & Concepts
+## Key Features
 
-EdgeNav combines global corridor routing with local decentralized conflict mitigation[cite: 1, 2]:
+- Decentralized Swarm Coordination: Eliminates central bottlenecks using peer-to-peer spatial deconfliction, priority-weighted corridor negotiations, and autonomous state machines covering pickup, loading, transit, unloading, and charging[cite: 1, 2].
+- Dynamic Replanning and A* Search: Real-time 2D grid heuristic routing with dynamic obstacle consideration, immediately rerouting autonomous mobile robots (AMRs) when blocked by active hazards or peer units.
+- Interactive 3D Digital Twin:
+  - Three perspective modes: Isometric industrial perspective, Top-Down 2D floor view, and Chase Cam following selected AMRs.
+  - Real-time trajectory visualization: Renders planned waypoint lines, dynamic LiDAR safety rings, and history trails.
+  - Traffic Density Heatmap: Alpha-blended matrix tracking cumulative grid occupancy to highlight aisle bottlenecks.
+  - Interactive Hazard Spawning: Raycast-driven click-to-deploy safety cones directly on warehouse aisle cells.
+- Mission Control Capabilities:
+  - Fleet-wide emergency stop (E-STOP) override.
+  - Benchmark scenario button forcing a direct head-on aisle encounter[cite: 1].
+  - Live incident audit feed logging state changes and conflict yields[cite: 1].
+  - CSV export functionality for all captured telemetry and audit events[cite: 1].
+
+---
+
+## System Architecture
