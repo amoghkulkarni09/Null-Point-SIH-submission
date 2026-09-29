@@ -1,34 +1,37 @@
-# EdgeNav 
-### Problem Statement ID – 26123
-### Problem Statement Title - Edge-AI Based Distributed Fleet Coordination for Autonomous Mobile Robots (AMRs) in Smart Warehouses
+# EdgeNav
 
+### SIH Problem Statement: Edge-AI Based Distributed Fleet Coordination for Autonomous Mobile Robots (AMRs) in Smart Warehouses (ID: 26123)
 
-> Decentralized Multi-Agent Swarm Navigation & 3D Industrial Digital Twin  
-> Developed for Smart India Hackathon (SIH 2026)
+EdgeNav is an industrial-grade, edge-centric multi-agent coordination platform engineered to eliminate single points of failure, communication latency bottlenecks, and traffic deadlocks in high-throughput warehouse logistics. The system replaces legacy monolithic fleet management servers with decentralized peer-to-peer (P2P) swarm intelligence, running distributed space-time corridor navigation directly onboard edge compute hardware such as the NVIDIA Jetson Orin Nano. It is architected not simply to compute shortest paths statically, but to dynamically arbitrate multi-agent right-of-way, clear aisle blockages via consensus, and execute autonomous task lifecycles in real time without cloud round-trip delays.
 
----
-
-## Overview
-
-EdgeNav (FleetGuard-AI) is an edge-centric, decentralized multi-agent pathfinding (MAPF) and fleet coordination framework[cite: 1, 2]. Designed for high-density industrial intralogistics, it eliminates central server single-points-of-failure by executing distributed trajectory planning, dynamic right-of-way conflict resolution, and battery-aware dispatch directly at the edge[cite: 1, 2].
-
-The repository provides a complete 3D Digital Twin and Mission Control Dashboard built with FastAPI WebSockets and Three.js. It features real-time 25Hz telemetry streams, dynamic hazard placement, aisle deadlock scenario injection, and interactive camera tracking.
+This repository implements a full-stack proof-of-concept and 3D digital twin prototype for the problem domain addressed in SIH 26123. The platform spans an onboard multi-agent pathfinding (MAPF) and reactive conflict resolution engine, asynchronous WebSocket telemetry broadcasting at 25 Hz, and an operator-facing interactive 3D WebGL mission control interface supporting live hazard placement, camera tracking, and telemetry audits.
 
 ---
 
-## Key Features
+### 1. Problem Definition
 
-- Decentralized Swarm Coordination: Eliminates central bottlenecks using peer-to-peer spatial deconfliction, priority-weighted corridor negotiations, and autonomous state machines covering pickup, loading, transit, unloading, and charging.
-- Dynamic Replanning and A* Search: Real-time 2D grid heuristic routing with dynamic obstacle consideration, immediately rerouting autonomous mobile robots (AMRs) when blocked by active hazards or peer units.
-- Interactive 3D Digital Twin:
-  - Three perspective modes: Isometric industrial perspective, Top-Down 2D floor view, and Chase Cam following selected AMRs.
-  - Real-time trajectory visualization: Renders planned waypoint lines, dynamic LiDAR safety rings, and history trails.
-  - Traffic Density Heatmap: Alpha-blended matrix tracking cumulative grid occupancy to highlight aisle bottlenecks.
-  - Interactive Hazard Spawning: Raycast-driven click-to-deploy safety cones directly on warehouse aisle cells.
-- Mission Control Capabilities:
-  - Fleet-wide emergency stop (E-STOP) override.
-  - Benchmark scenario button forcing a direct head-on aisle encounter.
-  - Live incident audit feed logging state changes and conflict yields.
-  - CSV export functionality for all captured telemetry and audit events.
+Modern automated fulfillment centers rely heavily on centralized fleet management software (FMS) architectures to coordinate dozens or hundreds of Autonomous Mobile Robots (AMRs) navigating narrow aisles and dense junction corridors.
 
+Traditional centralized fleet controls introduce severe operational risks, such as:
 
+* Is the central dispatch server and Wi-Fi access point bandwidth saturated?
+* Does a central controller crash or network outage halt the entire warehouse floor?
+* Can cloud or centralized planners respond within sub-millisecond safety windows when human workers or obstacles suddenly block a transit aisle?
+
+However, resilient swarm navigation in practice requires answering a more critical set of questions:
+
+> How can autonomous robots negotiate dynamic spatial-temporal corridors peer-to-peer at the edge, guarantee continuous operation even if individual nodes or central networks disconnect, and resolve aisle deadlocks autonomously without centralized arbitration?
+
+EdgeNav addresses this by modeling fleet coordination as a fully distributed, edge-native swarm system rather than relying on a brittle client-server dispatch loop.
+
+---
+
+### 2. Proposed Solution & Architecture
+
+EdgeNav implements a dual-horizon spatial-temporal routing architecture that splits global path planning from decentralized local deconfliction:
+
+* **Edge-Centric Swarm Architecture**: Full autonomy, state machines, and path calculations run on-device, targeting platforms like the Jetson Orin Nano to eliminate central infrastructure reliance.
+* **Brokerless P2P Swarm Mesh**: Utilizes high-speed peer-to-peer communication (such as the Zenoh protocol) to share trajectory intents directly between neighboring robots, replacing high-overhead centralized ROS/DDS messaging.
+* **Space-Time Corridor MAPF & Dynamic A\***: Combines heuristic grid search with dynamic obstacle avoidance, recalculating route corridors the moment a planned path is obstructed by hazards or peer units.
+* **Decentralized Right-of-Way Arbitration**: Units resolve aisle contention locally using priority metrics calculated from payload state (loaded vs. empty), task urgency, and remaining battery levels.
+* **Autonomous Task & Power Lifecycle**: AMRs autonomously transition through operational states (`PICKUP` -> `LOADING` -> `TRANSIT_DELIVERY` -> `UNLOADING` -> `CHARGING`), monitoring power draw and rerouting to inductive docks when reserves deplete below safety margins.
