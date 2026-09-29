@@ -106,7 +106,7 @@ Compared to conventional centralized warehouse management systems, EdgeNav deliv
 
  | Scalable P2P localized communication
 
- |
+ 
 
 ---
 
