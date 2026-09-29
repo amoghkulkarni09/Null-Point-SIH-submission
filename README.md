@@ -4,7 +4,7 @@
 
 
 > Decentralized Multi-Agent Swarm Navigation & 3D Industrial Digital Twin  
-> Developed for Smart India Hackathon (SIH 2026)[cite: 2]
+> Developed for Smart India Hackathon (SIH 2026)
 
 ---
 
@@ -18,7 +18,7 @@ The repository provides a complete 3D Digital Twin and Mission Control Dashboard
 
 ## Key Features
 
-- Decentralized Swarm Coordination: Eliminates central bottlenecks using peer-to-peer spatial deconfliction, priority-weighted corridor negotiations, and autonomous state machines covering pickup, loading, transit, unloading, and charging[cite: 1, 2].
+- Decentralized Swarm Coordination: Eliminates central bottlenecks using peer-to-peer spatial deconfliction, priority-weighted corridor negotiations, and autonomous state machines covering pickup, loading, transit, unloading, and charging.
 - Dynamic Replanning and A* Search: Real-time 2D grid heuristic routing with dynamic obstacle consideration, immediately rerouting autonomous mobile robots (AMRs) when blocked by active hazards or peer units.
 - Interactive 3D Digital Twin:
   - Three perspective modes: Isometric industrial perspective, Top-Down 2D floor view, and Chase Cam following selected AMRs.
@@ -27,10 +27,8 @@ The repository provides a complete 3D Digital Twin and Mission Control Dashboard
   - Interactive Hazard Spawning: Raycast-driven click-to-deploy safety cones directly on warehouse aisle cells.
 - Mission Control Capabilities:
   - Fleet-wide emergency stop (E-STOP) override.
-  - Benchmark scenario button forcing a direct head-on aisle encounter[cite: 1].
-  - Live incident audit feed logging state changes and conflict yields[cite: 1].
-  - CSV export functionality for all captured telemetry and audit events[cite: 1].
+  - Benchmark scenario button forcing a direct head-on aisle encounter.
+  - Live incident audit feed logging state changes and conflict yields.
+  - CSV export functionality for all captured telemetry and audit events.
 
----
 
-## System Architecture
