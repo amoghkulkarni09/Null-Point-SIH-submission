@@ -241,10 +241,4 @@ http://127.0.0.1:8000
  |
 | **Emergency Stop** | Red Action Button | Broadcasts immediate kinematics halt across all active fleet units
 
- |
 
----
-
-### 8. License
-
-This project is released under the MIT License. See the `LICENSE` file for details.
